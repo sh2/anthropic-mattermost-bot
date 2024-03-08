@@ -110,12 +110,6 @@ class ChatBot(Plugin):
             ws.send(json.dumps(self.websocket_auth))
             self.send_typing(ws)
 
-            # Reply with an empty message and update with stream data.
-            reply = self.driver.reply_to(message, "")
-            reply_id = reply["id"]
-            reply_chunks = []
-            last_time = time.time()
-
             # Call Anthropic's API.
             with self.client.messages.stream(
                 max_tokens=4096,
@@ -123,6 +117,12 @@ class ChatBot(Plugin):
                 messages=requestMessages,
                 model=ChatBot.anthropic_model
             ) as stream:
+                # Reply with an empty message and update with stream data.
+                reply = self.driver.reply_to(message, "")
+                reply_id = reply["id"]
+                reply_chunks = []
+                last_time = time.time()
+
                 for chunk in stream.text_stream:
                     reply_chunks.append(chunk)
                     current_time = time.time()

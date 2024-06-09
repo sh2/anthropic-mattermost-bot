@@ -11,4 +11,4 @@ podman run \
         --env=ANTHROPIC_API_KEY= \
         --env=ANTHROPIC_PROXY= \
         --name=anthropic-chat-bot \
-        anthropic-chat-bot:latest
+        anthropic-chat-bot:20240101

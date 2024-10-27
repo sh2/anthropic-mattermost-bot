@@ -29,7 +29,7 @@ def handler(signum, frame):
 
 class ChatBot(Plugin):
     anthropic_model = os.environ.get(
-        "ANTHROPIC_MODEL") or "claude-3-sonnet-20240229"
+        "ANTHROPIC_MODEL") or "claude-3-5-sonnet-latest"
 
     def __init__(self):
         super().__init__()

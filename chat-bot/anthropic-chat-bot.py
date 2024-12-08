@@ -39,7 +39,7 @@ class ChatBot(Plugin):
         http_client = None
 
         if anthropic_proxy:
-            http_client = httpx.Client(proxies=anthropic_proxy)
+            http_client = httpx.Client(proxy=anthropic_proxy)
 
         self.client = anthropic.Anthropic(
             api_key=os.environ.get("ANTHROPIC_API_KEY", ""),
